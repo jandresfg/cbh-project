@@ -9,3 +9,9 @@ You've been asked to refactor the function `deterministicPartitionKey` in [`dpk.
 You will be graded on the exhaustiveness and quality of your unit tests, the depth of your refactor, and the level of insight into your thought process provided by the written explanation.
 
 ## Your Explanation Here
+
+The refactor starts by identifying the very base case, which is return 0 when no input. I did that with an `if` and a `return` so that the following code can now work under the assumption that the input actually exists.
+
+The next check is in event.partitionKey, if it doesn't exist return the hashed, stringified version of the whole event. The following code can now work under the assumption that event.partitionKey actually exists.
+
+save event.partitionKey in the candidate variable, if it's not string then stringify it, and if it's longer than MAX then hash it. Then return candidate.
